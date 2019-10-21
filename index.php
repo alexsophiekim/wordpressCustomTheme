@@ -10,15 +10,28 @@
         <div class="container">
             <?php if( have_posts() ): ?>
                 <?php while( have_posts() ): the_post(); ?>
-                    <div class="card mt-3">
-                        <h5 class="card-header"><?php the_title(); ?></h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <div>
-                                <?php the_content(); ?>
-                            </div>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="card mb-3" >
+                      <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <h5 class="card-title"><?php the_title(); ?></h5>
+                            <?php if(has_post_thumbnail): ?>
+                                    <?php the_post_thumbnail('thumbnail', ['class' => 'img-fluid']); ?>
+
+                            <?php endif; ?>
                         </div>
+                        <div class="col-md-9">
+                          <div class="card-body">
+                              <?php if(is_home()): ?>
+                                  <?php the_excerpt(); ?>
+                              <?php else: ?>
+                                  <?php the_content(); ?>
+                              <?php endif; ?>
+                          </div>
+                          <?php if(!is_single()): ?>
+                              <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read More</a>
+                          <?php endif; ?>
+                        </div>
+                      </div>
                     </div>
                 <?php endwhile; ?>
             <?php endif; ?>
