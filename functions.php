@@ -14,3 +14,24 @@ add_action('wp_enqueue_scripts', 'addCustomThemeFiles_1902');
 
 
 add_theme_support( 'post-thumbnails', array('post') );
+
+add_image_size('icon',50 ,50 ,true);
+
+function addCustomMenus_1902(){
+    add_theme_support('menus');
+    // register_nav_menu('top navigation', 'The top navigation is located at the top of each page.');
+    register_nav_menu( 'top_navigation', __( 'The top navigation is located at the top of each page.', '1902Custom' ) );
+    register_nav_menu( 'footer_navigation', __( 'The footer navigation is located at the bottom of each page.', '1902Custom' ) );
+    register_nav_menu( 'side_navigation', __( 'The side navigation is located at the left of the page.', '1902Custom' ) );
+    //register_nave_menu both of them is exactly same but under one is more specific. If you have many data, many theme, wordpress will confuse; It could be causing issue;
+}
+
+add_action('after_setup_theme', 'addCustomMenus_1902');
+
+/**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
