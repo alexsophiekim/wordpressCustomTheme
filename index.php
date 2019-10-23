@@ -29,79 +29,66 @@
                     </div>
                 </nav>
             <?php endif; ?>
-            <div class="col-2 float-left">
-                <?php if(has_nav_menu('side_navigation')): ?>
-                <nav class="navbar">
-                    <?php
-                    wp_nav_menu( array(
-                        'theme_location'    => 'side_navigation',
-                        'depth'             => 2,
-                        'container'         => 'div',
-                        'container_class'   => 'nav',
-                        'container_id'      => 'side_navigation',
-                        'menu_class'        => 'nav navbar-nav',
-                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                        'walker'            => new WP_Bootstrap_Navwalker(),
-                    ) );
-                    ?>
-                </nav>
-            <?php endif; ?>
-            </div>
-            <div class="col-10 float-right">
-                <div class="container">
 
-                    <?php if( have_posts() ): ?>
-                        <?php while( have_posts() ): the_post(); ?>
-                            <div class="card mb-3" >
-                                <h5 class="card-header"><?php the_title(); ?></h5>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <?php if(has_post_thumbnail()): ?>
-                                            <?php if(is_home()): ?>
-                                                <div class="col-12 col-md-3">
-                                                    <?php the_post_thumbnail('medium', ['class' => 'img-fluid']); ?>
-                                                </div>
-                                            <?php else: ?>
-                                                <div class="col-12 text-center mb-5">
-                                                    <?php the_post_thumbnail('large', ['class' => 'img-fluid']); ?>
-                                                </div>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                        <div class="col">
-                                            <div>
-                                                <?php if(is_home()): ?>
-                                                    <?php the_excerpt(); ?>
-                                                <?php else: ?>
-                                                    <?php the_content(); ?>
-                                                <?php endif; ?>
-                                            </div>
-                                            <?php if(!is_single()): ?>
-                                                <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read More</a>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
+                <div class="container">
+                    <div class="row">
+                        <?php if(has_nav_menu('side_navigation')): ?>
+                            <div class="col-12 col-md-3">
+                                <div class="card h-100 mb-2 mt-2 p-2">
+                                    <?php wp_nav_menu(array('theme-location' => 'side_navigation')); ?>
                                 </div>
                             </div>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
+                        <?php endif; ?>
+                        <div class="col">
+                            <?php if( have_posts() ): ?>
+                                <?php while( have_posts() ): the_post(); ?>
+                                    <div class="card mb-3" >
+                                        <h5 class="card-header"><?php the_title(); ?></h5>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <?php if(has_post_thumbnail()): ?>
+                                                    <?php if(is_home()): ?>
+                                                        <div class="col-12 col-md-3">
+                                                            <?php the_post_thumbnail('medium', ['class' => 'img-fluid']); ?>
+                                                        </div>
+                                                    <?php else: ?>
+                                                        <div class="col-12 text-center mb-5">
+                                                            <?php the_post_thumbnail('large', ['class' => 'img-fluid']); ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <div class="col">
+                                                    <div>
+                                                        <?php if(is_home()): ?>
+                                                            <?php the_excerpt(); ?>
+                                                        <?php else: ?>
+                                                            <?php the_content(); ?>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <?php if(!is_single()): ?>
+                                                        <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read More</a>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+
+            <?php if(has_nav_menu('footer_navigation')): ?>
             <footer>
-                <nav class="navbar fixed-bottom bg-dark">
+                <nav class="navbar fixed-bottom bg-dark tex-white">
                     <?php
-                    wp_nav_menu( array(
-                        'theme_location'    => 'footer_navigation',
-                        'depth'             => 2,
-                        'container'         => 'div',
-                        'container_class'   => 'nav',
-                        'container_id'      => 'footer_navigation',
-                        'menu_class'        => 'nav navbar-nav',
-                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                        'walker'            => new WP_Bootstrap_Navwalker(),
-                    ) );
+                    wp_nav_menu( array( 'theme_location' => 'footer_navigation' ) );
                     ?>
                 </nav>
             </footer>
+        <?php endif; ?>
+
         <?php wp_footer(); ?>
      </body>
     </html>
