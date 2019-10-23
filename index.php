@@ -65,7 +65,7 @@
                                                             <?php the_content(); ?>
                                                         <?php endif; ?>
                                                     </div>
-                                                    <?php if(!is_single()): ?>
+                                                    <?php if(!is_singular()): ?>
                                                         <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read More</a>
                                                     <?php endif; ?>
                                                 </div>
