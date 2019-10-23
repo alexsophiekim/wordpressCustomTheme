@@ -28,9 +28,14 @@ function addCustomMenus_1902(){
 
 add_action('after_setup_theme', 'addCustomMenus_1902');
 
-/**
- * Register Custom Navigation Walker
- */
+register_default_headers(array(
+    'defaultImage' => array(
+        'url' => get_template_directory_uri() . '/assets/images/bg.jpg',
+        'thumbnail_url' => get_template_directory_uri() . '/assets/images/bg.jpg',
+        'description' => __('The default image for the custom header.', '1902Custom')
+    )
+));
+
 function register_navwalker(){
 	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
@@ -39,6 +44,6 @@ add_action( 'after_setup_theme', 'register_navwalker' );
 $customHeaderDefaults = array(
     'width' => 1280,
 	'height' => 720,
-    'default-image' => get_template_directory_uri() . '/assets/images/bg.jpg',
+    'default-image' => get_template_directory_uri() . '/assets/images/bg.jpg'
 );
 add_theme_support('custom-header', $customHeaderDefaults);
