@@ -47,3 +47,5 @@ $customHeaderDefaults = array(
     'default-image' => get_template_directory_uri() . '/assets/images/bg.jpg'
 );
 add_theme_support('custom-header', $customHeaderDefaults);
+
+add_theme_support('wp-block-styles');
