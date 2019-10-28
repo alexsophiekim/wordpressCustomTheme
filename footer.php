@@ -1,10 +1,15 @@
 <?php if(has_nav_menu('footer_navigation')): ?>
-<footer>
-    <nav class="navbar mb-0 bg-dark tex-white">
+<footer class="bg-dark text-white p-5 mt-5">
+    <div class="container">
+        <div class="row">
         <?php
-        wp_nav_menu( array( 'theme_location' => 'footer_navigation' ) );
+        wp_nav_menu( array( 'theme_location' => 'footer_navigation',
+                            'container' => '',
+                            'menu_class' => 'footerNav'
+                        ));
         ?>
-    </nav>
+        </div>
+    </div>
 </footer>
 <?php endif; ?>
 

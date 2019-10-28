@@ -12,9 +12,6 @@ function addCustomThemeFiles_1902(){
 
 add_action('wp_enqueue_scripts', 'addCustomThemeFiles_1902');
 
-
-add_theme_support( 'post-thumbnails', array('post') );
-
 add_image_size('icon',50 ,50 ,true);
 
 function addCustomMenus_1902(){
@@ -46,6 +43,11 @@ $customHeaderDefaults = array(
 	'height' => 720,
     'default-image' => get_template_directory_uri() . '/assets/images/bg.jpg'
 );
-add_theme_support('custom-header', $customHeaderDefaults);
 
+
+add_theme_support( 'post-thumbnails', array('post') );
+add_theme_support('custom-header', $customHeaderDefaults);
 add_theme_support('wp-block-styles');
+
+
+add_theme_support('post-formats', array('video','audio','image','gallery'));

@@ -14,15 +14,15 @@
                 </div>
             </div>
             <?php endif; ?>
-        <div class="col">
+        <div class="col h-100">
             <?php if( have_posts() ): ?>
                 <?php while( have_posts() ): the_post(); ?>
-                    <div class="card my-2 h-100" >
+                    <div class="card h-100 m-2" >
                         <h5 class="card-header"><?php the_title(); ?></h5>
                         <div class="card-body">
                             <div class="row">
                                 <?php if(has_post_thumbnail()): ?>
-                                    <?php if(is_home()): ?>
+                                    <?php if(!is_singular()): ?>
                                         <div class="col-12 col-md-3">
                                             <?php the_post_thumbnail('medium', ['class' => 'img-fluid']); ?>
                                         </div>
@@ -34,7 +34,7 @@
                                 <?php endif; ?>
                                 <div class="col">
                                     <div>
-                                        <?php if(is_home()): ?>
+                                        <?php if(!is_singular()): ?>
                                             <?php the_excerpt(); ?>
                                         <?php else: ?>
                                             <?php the_content(); ?>
