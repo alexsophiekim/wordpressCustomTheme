@@ -45,9 +45,36 @@ $customHeaderDefaults = array(
 );
 
 
-add_theme_support( 'post-thumbnails', array('post') );
+add_theme_support( 'post-thumbnails', array('post', 'movie') );
 add_theme_support('custom-header', $customHeaderDefaults);
 add_theme_support('wp-block-styles');
 
 
 add_theme_support('post-formats', array('video','audio','image','gallery'));
+
+function add_custom_post_types(){
+    $args = array(
+        'labels' => array(
+            'name' => 'Movies',
+            'singular_name' => 'Movie',
+            'add_new_item' => 'Add New Movie'
+        ),
+        'description' => 'A list of all the movies we have in our website',
+        'public' => true,
+        'hierarchical' => true,
+        'show_in_nav_menus' => false,
+        'show_in_rest' => true,
+        'menu_position' => 6,
+        'menu_icon' => 'dashicons-tickets-alt',
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail',
+            'post-formats'
+        ),
+        'delete_with_user' => false
+    );
+    register_post_type('movie', $args);
+}
+
+add_action('init', 'add_custom_post_types');

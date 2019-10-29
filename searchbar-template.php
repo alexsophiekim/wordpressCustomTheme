@@ -12,7 +12,7 @@
          <form action="<?php echo home_url(); ?>" method="get">
              <div class="form-group">
                  <label for="">Search for posts</label>
-                 <input type="hidden" name="post_type" value="post,page">
+                 <input type="hidden" name="post_type" value="post,movie">
                  <input name="s" value="<?php the_search_query(); ?>" type="text" class="form-control" placeholder="Search posts" >
              </div>
              <div class="form-group">
