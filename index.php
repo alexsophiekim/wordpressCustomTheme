@@ -1,3 +1,5 @@
+
+<?php error_reporting(E_ALL);  ?>
 <?php get_header(); ?>
 
 <div class="container ">

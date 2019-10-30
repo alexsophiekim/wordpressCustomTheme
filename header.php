@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php if(has_nav_menu('top_navigation')): ?>
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark barColour" role="navigation">
               <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top_navigation" aria-controls="top_navigation" aria-expanded="false" aria-label="Toggle navigation">

@@ -78,3 +78,6 @@ function add_custom_post_types(){
 }
 
 add_action('init', 'add_custom_post_types');
+
+
+require_once get_template_directory() . '/inc/customizer.php';
