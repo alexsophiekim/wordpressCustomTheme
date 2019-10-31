@@ -26,6 +26,29 @@
     	'settings'   => '1902_barColour',
     ) ) );
 
+    $wp_customize->add_setting( '1902_buttonColour' , array(
+        'default'   => '#587a8e',
+        'transport' => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_buttonColourControl', array(
+    	'label'      => __( 'Button Colour', '1902Custom' ),
+        'description' => 'Change the button colour',
+    	'section'    => 'colors',
+    	'settings'   => '1902_buttonColour',
+    ) ) );
+    $wp_customize->add_setting( '1902_cardColour' , array(
+        'default'   => '#ffe6c0',
+        'transport' => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, '1902_cardColourControl', array(
+    	'label'      => __( 'Card Colour', '1902Custom' ),
+        'description' => 'Change the card colour',
+    	'section'    => 'colors',
+    	'settings'   => '1902_cardColour',
+    ) ) );
+
     $wp_customize->add_section( '1902Custom_copyright' , array(
         'title'      => __('copyright','1902Custom'),
         'priority'   => 30,
@@ -41,6 +64,31 @@
        'section'    => '1902Custom_copyright',
        'settings'   => '1902Custom_theme_copyright'
     ));
+    $wp_customize->add_section('1902_content', array(
+       'title'           => __('Front Content', '1902Custom'),
+       'priority'        => 70
+   ));
+    $wp_customize->add_setting('1902Custom_contentImg', array(
+        'transport'         => 'refresh',
+        'height'            => 325,
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, '1902Custom_contentImg_control', array(
+        'label'             => __('Content Image', '1902Custom'),
+        'section'           => '1902_content',
+        'settings'          => '1902Custom_contentImg',
+    )));
+    $wp_customize->add_setting('1902Custom_contentText', array(
+        'default'        => '1902Custom_theme',
+        'transport'      => 'refresh',
+    ) );
+
+    $wp_customize->add_control('1902Custom_contentText_control', array(
+       'label'      => __('contentText', '1902Custom'),
+       'section'    => '1902_content',
+       'settings'   => '1902Custom_contentText'
+    ));
+
+
 
     }
     add_action( 'customize_register', 'mytheme_customize_register' );
@@ -53,11 +101,15 @@
                  body{
                      background-color: <?php echo get_theme_mod('1902_backgroundColour','#ef826d'); ?>
                  }
-
                  .barColour{
                      background-color: <?php echo get_theme_mod('1902_barColour','#ef826d'); ?>!important;
                  }
-
+                 .buttonColour{
+                     background-color: <?php echo get_theme_mod('1902_buttonColour','#587a8e'); ?>!important;
+                 }
+                 .cardColour{
+                     background-color: <?php echo get_theme_mod('1902_cardColour', '#ffe6c0'); ?>!important;
+                 }
 
              </style>
         <?php

@@ -18,7 +18,7 @@
     };
  ?>
 
-<div class="card h-100 border border-warning">
+<div class="card h-100 border border-warning cardColour">
     <div class="card-body">
         <h5 class="card-title"><?php the_title(); ?></h5>
         <?php if ($firstVideoBlock): ?>

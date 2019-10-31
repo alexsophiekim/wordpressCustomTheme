@@ -1,5 +1,3 @@
-
-<?php error_reporting(E_ALL);  ?>
 <?php get_header(); ?>
 
 <div class="container ">
@@ -19,7 +17,7 @@
         <div class="col h-100">
             <?php if( have_posts() ): ?>
                 <?php while( have_posts() ): the_post(); ?>
-                    <div class="card h-100 m-2" >
+                    <div class="card h-100 m-2 cardColour" >
                         <h5 class="card-header"><?php the_title(); ?></h5>
                         <div class="card-body">
                             <div class="row">

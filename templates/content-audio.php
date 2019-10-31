@@ -10,7 +10,7 @@ if (has_blocks()) {
 }
  ?>
 
-<div class="card h-100 border border-success">
+<div class="card h-100 border border-success cardColour">
     <div class="card-body">
         <h5 class="card-title"><?php the_title(); ?></h5>
         <div class="fullAudio">

@@ -10,7 +10,7 @@ if (has_blocks()) {
 }
  ?>
 
-<div class="card h-100 border border-info">
+<div class="card h-100 border border-info cardColour">
     <div class="card-body">
         <h5 class="card-title"><?php the_title(); ?></h5>
         <div class="img-fluid">

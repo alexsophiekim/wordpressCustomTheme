@@ -36,6 +36,21 @@
                 );
                 $paginationLinks = paginate_links($args);
                 ?>
+
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                <?php if (isset(get_theme_mod['1902Custom_contentImg'])): ?>
+                    <div class="col-10">
+                        <img src="<?php  ?>" alt="">
+                <?php endif; ?>
+                <?php if (isset(get_theme_mod['1902Custom_contentText'])): ?>
+                    <h1><?php echo get_theme_mod('1902Custom_contentText'); ?></h1>
+                <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+
+
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <?php foreach($paginationLinks as $link): ?>
