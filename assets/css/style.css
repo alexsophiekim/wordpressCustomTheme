@@ -64,3 +64,8 @@
 .fullAudio audio {
     min-width: fit-content;
 }
+.textOn{
+    position: absolute !important;
+    top:200px !important;
+    left: 200px !important;
+}

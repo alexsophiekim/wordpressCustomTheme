@@ -18,11 +18,21 @@
     <?php if( have_posts() ): ?>
         <div class="container">
             <div class="row mt-3">
-                <?php while( have_posts() ): the_post(); ?>
-                    <div class="col-12 col-md-4 mb-3">
+                <?php if ('Grid' === get_theme_mod('1902Custom_layout_Card','Row')):?>
+                    <?php while( have_posts() ): the_post(); ?>
+                        <div class="col-12 col-md-4 mb-3">
+                            <?php get_template_part('templates/content', get_post_format()); ?>
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                <div class="row">
+                    <?php while( have_posts() ): the_post(); ?>
+                    <div class="col-12 p-4">
                         <?php get_template_part('templates/content', get_post_format()); ?>
                     </div>
                 <?php endwhile; ?>
+                </div>
+                <?php endif; ?>
             </div>
             <?php
                 $count_posts = wp_count_posts();
@@ -38,18 +48,17 @@
                 ?>
 
             <div class="row">
-                <div class="d-flex justify-content-center">
-                <?php if (isset(get_theme_mod['1902Custom_contentImg'])): ?>
-                    <div class="col-10">
-                        <img src="<?php  ?>" alt="">
+                <div class="position-relative">
+                <?php if (get_theme_mod('1902Custom_contentImg')): ?>
+                    <img class="w-100" src="<?php echo get_theme_mod('1902Custom_contentImg'); ?>" alt="">
                 <?php endif; ?>
-                <?php if (isset(get_theme_mod['1902Custom_contentText'])): ?>
-                    <h1><?php echo get_theme_mod('1902Custom_contentText'); ?></h1>
-                <?php endif; ?>
-                        </div>
+                    <div class="text-block textOn">
+                        <?php if (get_theme_mod('1902Custom_contentText')): ?>
+                            <h1 class="text-center"><?php echo get_theme_mod('1902Custom_contentText'); ?></h1>
+                        <?php endif; ?>
                     </div>
                 </div>
-
+            </div>
 
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">

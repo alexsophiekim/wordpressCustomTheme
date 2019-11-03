@@ -36,19 +36,32 @@
             </div>
         <?php endwhile; ?>
     <?php endif; ?>
-</div>
+    </div>
     <?php if(has_nav_menu('side_navigation')): ?>
-        <div class="col-12 col-md-3">
-            <div class="card h-100 mb-2 mt-2 p-2">
-                <?php wp_nav_menu(array(
-                    'theme-location' => 'side_navigation',
-                    'menu_class' => 'list-group list-group-flush',
-                    'container' => '',
-                    'menu_id' => 'sideNav'
-                )); ?>
+        <?php if ('right' === get_theme_mod('1902Custom_layout_Sidebar','left')): ?>
+            <div class="col-12 col-md-3">
+                <div class="card h-100 mb-2 mt-2 p-2 ">
+                    <?php wp_nav_menu(array(
+                        'theme-location' => 'side_navigation',
+                        'menu_class' => 'list-group list-group-flush',
+                        'container' => '',
+                        'menu_id' => 'sideNav'
+                    )); ?>
+                </div>
             </div>
-        </div>
+        <?php else : ?>
+            <div class="col-12 col-md-3">
+                <div class="card h-100 mb-2 mt-2 p-2 ">
+                    <?php wp_nav_menu(array(
+                        'theme-location' => 'side_navigation',
+                        'menu_class' => 'list-group list-group-flush',
+                        'container' => '',
+                        'menu_id' => 'sideNav'
+                    )); ?>
+                </div>
+            </div>
         <?php endif; ?>
+    <?php endif; ?>
     </div>
 </div>
 

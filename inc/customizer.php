@@ -88,7 +88,40 @@
        'settings'   => '1902Custom_contentText'
     ));
 
-
+    $wp_customize->add_section( '1902_layout', array(
+        'title'     => __( 'Layout', '1902Custom' ),
+        'priority' => 110,
+    ) );
+    $wp_customize->add_setting( '1902Custom_layout_Sidebar', array(
+        'default'        => 'right',
+        'transport'      => 'refresh'
+    ) );
+    $wp_customize->add_control( '1902Custom_layout_control', array(
+        'label'    => __( 'Layout', '1902Custom' ),
+        'section'  => '1902_layout',
+        'settings' => '1902Custom_layout_Sidebar',
+        'type'     => 'select',
+		'priority' => 1,
+		'choices'  => array(
+			'left'   => __( 'Left Sidebar', '1902Custom' ),
+			'right'  => __( 'Right Sidebar', '1902Custom' ),
+		),
+    ));
+    $wp_customize->add_setting( '1902Custom_layout_Card', array(
+        'default'        => 'Grid',
+        'transport'      => 'refresh'
+    ) );
+    $wp_customize->add_control( '1902Custom_layout_Card_control', array(
+        'label'    => __( 'Layout', '1902Custom' ),
+        'section'  => '1902_layout',
+        'settings' => '1902Custom_layout_Card',
+        'type'     => 'select',
+		'priority' => 1,
+		'choices'  => array(
+			'Grid'   => __( 'Grid', '1902Custom' ),
+			'Row'  => __( 'Row', '1902Custom' ),
+		),
+    ));
 
     }
     add_action( 'customize_register', 'mytheme_customize_register' );
