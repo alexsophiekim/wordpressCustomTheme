@@ -118,11 +118,25 @@
         'type'     => 'select',
 		'priority' => 1,
 		'choices'  => array(
-			'Grid'   => __( 'Grid', '1902Custom' ),
+			'Grid' => __( 'Grid', '1902Custom' ),
 			'Row'  => __( 'Row', '1902Custom' ),
 		),
     ));
-
+    $wp_customize->add_section('1902Custom_carousel', array(
+           'title'            => __('Slider Images', '1902Custom'),
+           'priority'         => 70,
+    ));
+        for ($i=1; $i <=3 ; $i++) {
+            $wp_customize->add_setting('1902Custom_carousel_img_' .$i, array(
+                   'transport'        => 'refresh',
+                   'height'           => 325,
+            ));
+            $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, '1902Custom_carousel_img_'.$i, array(
+                   'label'            => __('Slider Image #'.$i, '1902Custom'),
+                   'section'          => '1902Custom_carousel',
+                   'settings'         => '1902Custom_carousel_img_'.$i,
+            )));
+        }
     }
     add_action( 'customize_register', 'mytheme_customize_register' );
 

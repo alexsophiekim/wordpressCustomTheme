@@ -14,6 +14,22 @@
             </div>
         </div>
     <?php endif; ?>
+    <?php if(isset($firstSlide)): ?>
+    <div class="container">
+        <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+              <?php for ($i=1; $i <= 3 ; $i++) :?>
+                  <?php if(get_theme_mod('1902Custom_carousel_img_'.$i)): ?>
+                    <div class="carousel-item <?php if($firstSlide === $i){echo 'active';} ?>">
+                        <img src="<?php echo get_theme_mod( '1902Custom_carousel_img_' . $i ); ?>" class="d-block w-100" alt="">
+                    </div>
+                <?php endif; ?>
+            <?php endfor; ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
 
     <?php if( have_posts() ): ?>
         <div class="container">
@@ -47,14 +63,14 @@
                 $paginationLinks = paginate_links($args);
                 ?>
 
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="position-relative">
                 <?php if (get_theme_mod('1902Custom_contentImg')): ?>
-                    <img class="w-100" src="<?php echo get_theme_mod('1902Custom_contentImg'); ?>" alt="">
+                    <img class="img-fluid" src="<?php echo get_theme_mod('1902Custom_contentImg'); ?>" alt="">
                 <?php endif; ?>
                     <div class="text-block textOn">
                         <?php if (get_theme_mod('1902Custom_contentText')): ?>
-                            <h1 class="text-center"><?php echo get_theme_mod('1902Custom_contentText'); ?></h1>
+                            <h1 class="text-center text-danger"><?php echo get_theme_mod('1902Custom_contentText'); ?></h1>
                         <?php endif; ?>
                     </div>
                 </div>
