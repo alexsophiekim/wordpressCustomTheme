@@ -155,14 +155,26 @@
         'transport'      => 'refresh',
     ) );
 
-    // $wp_customize->add_control(new WP_Customize_Control, $wp_customize,
-	// '1902Custom_featuredPost', array(
-    //     		'label'    => __( 'Featured Post', '1902Custom' ),
-    //     		'section'  => '1902Custom_featuredSection',
-    //     		'settings' => '1902Custom_featuredInfo',
-    //     		'type'     => 'select',
-    //     		'choices'  => array($allPosts)
-    // ));
+
+    $allPosts = get_posts(array(
+        'numberposts' => -1
+    ));
+
+    $allChoices = array();
+    $allChoices[''] = 'Please Choose a Featured Post';
+    foreach ($allPosts as $post) {
+        $allChoices[$post->ID] = $post->post_title;
+    }
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize,'featuredPostControl',
+            array(
+                'label'          => __( 'Featured Posts', '1902Custom' ),
+                'section'        => '1902Custom_featuredSection',
+                'settings'       => '1902Custom_featuredInfo',
+                'type'           => 'select',
+                'choices'        => $allChoices
+            )
+        )
+    );
 
     }
     add_action( 'customize_register', 'mytheme_customize_register' );
