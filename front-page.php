@@ -23,6 +23,19 @@
             </div>
         </div>
     <?php endif; ?>
+
+    <?php if(get_theme_mod('1902Custom_featuredInfo')) :?>
+        
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <?php get_theme_mod('1902Custom_featuredInfo'); ?>
+                    </div>
+                </div>
+            </div>
+        
+    <?php endif; ?>
+
     <?php if(isset($firstSlide)): ?>
     <div class="container">
         <div id="homeCarousel" class="carousel slide" data-ride="carousel">

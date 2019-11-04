@@ -1,5 +1,14 @@
 <?php
 
+    $allPosts = get_posts(array(
+        'numberposts' => -1
+    ));
+    $allChoices = array();
+    $allChoices[''] = 'Please select featured post';
+    foreach ($allPosts as $post ) {
+        $allPosts[$post->ID] = $post->post_title;
+    }
+
     function mytheme_customize_register( $wp_customize ) {
     //All our sections, settings, and controls will be added here
     $wp_customize->add_setting( '1902_backgroundColour' , array(
@@ -137,6 +146,24 @@
                    'settings'         => '1902Custom_carousel_img_'.$i,
             )));
         }
+    $wp_customize->add_section( '1902Custom_featuredSection' , array(
+        'title'      => __('Featured Section','1902Custom'),
+        'priority'   => 30,
+    ) );
+    $wp_customize->add_setting('1902Custom_featuredInfo', array(
+        'default'        => '1902Custom_theme',
+        'transport'      => 'refresh',
+    ) );
+
+    // $wp_customize->add_control(new WP_Customize_Control, $wp_customize,
+	// '1902Custom_featuredPost', array(
+    //     		'label'    => __( 'Featured Post', '1902Custom' ),
+    //     		'section'  => '1902Custom_featuredSection',
+    //     		'settings' => '1902Custom_featuredInfo',
+    //     		'type'     => 'select',
+    //     		'choices'  => array($allPosts)
+    // ));
+
     }
     add_action( 'customize_register', 'mytheme_customize_register' );
 
