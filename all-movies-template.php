@@ -36,6 +36,8 @@
                      <div class="card p-3">
                          <h4><?php the_title(); ?></h4>
                          <p>Year Released: <?php echo get_post_meta(get_the_ID(),'1902_year',true) ?></p>
+                         <p>Directors: <?php echo get_post_meta(get_the_ID(),'1902_directors',true) ?></p>
+                         <p>Genre: <?php echo get_post_meta(get_the_ID(),'1902_genre',true) ?></p>
                      </div>
                  </div>
              <?php endwhile; ?>

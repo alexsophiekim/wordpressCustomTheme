@@ -2,6 +2,8 @@
 
 function add_custom_meta_boxes(){
     add_meta_box( 'moviesInfo', 'More Movies Info', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
+    add_meta_box( 'moviesInfo', 'Movie Directors', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
+    add_meta_box( 'moviesInfo', 'Movie Genre', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
 }
 
 add_action('add_meta_boxes','add_custom_meta_boxes');
@@ -21,12 +23,15 @@ function moviesInfoCallback($post){
     require_once get_template_directory() . '/inc/moviesInfoForm.php';
 }
 
+
 function save_moviesInfo_meta_boxes($post_id){
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
     $fields = [
-        '1902_year'
+        '1902_year',
+        '1902_directors',
+        '1902_genre'
     ];
     foreach ($fields as $field) {
         if (array_key_exists($field, $_POST)) {
