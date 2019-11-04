@@ -131,7 +131,7 @@
                    'transport'        => 'refresh',
                    'height'           => 325,
             ));
-            $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, '1902Custom_carousel_img_'.$i, array(
+            $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, '1902Custom_carousel_img_control'.$i, array(
                    'label'            => __('Slider Image #'.$i, '1902Custom'),
                    'section'          => '1902Custom_carousel',
                    'settings'         => '1902Custom_carousel_img_'.$i,

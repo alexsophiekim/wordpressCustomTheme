@@ -1,3 +1,12 @@
+<?php
+    for ($i=1; $i <= 3 ; $i++) {
+        if(get_theme_mod('1902Custom_carousel_img_'.$i)){
+            $firstSlide = $i;
+            break;
+        }
+    }
+ ?>
+
 <?php get_header(); ?>
     <?php if(has_header_image()): ?>
         <div class="container-fluid p-0">
@@ -19,7 +28,7 @@
         <div id="homeCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
               <?php for ($i=1; $i <= 3 ; $i++) :?>
-                  <?php if(get_theme_mod('1902Custom_carousel_img_'.$i)): ?>
+                  <?php if(get_theme_mod('1902Custom_carousel_img_'.$i)):?>
                     <div class="carousel-item <?php if($firstSlide === $i){echo 'active';} ?>">
                         <img src="<?php echo get_theme_mod( '1902Custom_carousel_img_' . $i ); ?>" class="d-block w-100" alt="">
                     </div>
