@@ -1,10 +1,18 @@
 <?php get_header(); ?>
 
 <div class="container ">
-    <div class="row">
+    <div class="row my-3 d-flex">
         <?php if(has_nav_menu('side_navigation')): ?>
-            <div class="col-12 col-md-3 ">
-                <div class="card h-100 mb-2 mt-2 p-2">
+            <?php
+                $position = get_theme_mod('1902Custom_layout_Sidebar');
+                if ($position == 'left') {
+                    $side = 'order-0';
+                } else {
+                    $side = 'order-2';
+                }
+             ?>
+            <div class="col-12 col-md-3 py-2 <?php echo $side; ?>">
+                <div class="card h-100">
                     <?php wp_nav_menu(array(
                         'theme-location' => 'side_navigation',
                         'menu_class' => 'list-group list-group-flush',

@@ -45,7 +45,7 @@ $customHeaderDefaults = array(
 );
 
 
-add_theme_support( 'post-thumbnails', array('post', 'movie') );
+add_theme_support( 'post-thumbnails', array('post', 'movie', 'events') );
 add_theme_support('custom-header', $customHeaderDefaults);
 add_theme_support('wp-block-styles');
 
@@ -78,6 +78,26 @@ function add_custom_post_types(){
 }
 
 add_action('init', 'add_custom_post_types');
+
+function add_event_post_types(){
+    $args = array(
+        'labels' => array(
+            'name' => 'Events',
+            'singular_name' => 'Events',
+        ),
+        'hierarchical' => true,
+        'show_in_nav_menus' => false,
+        'show_in_rest' => false,
+        'menu_position' => 6,
+        'menu_icon' => 'dashicons-calendar',
+        'delete_with_user' => false,
+        'public' => true,
+        'supports' => array('thumbnail','editor','title','custom-fields')
+    );
+    register_post_type('events', $args);
+}
+add_action('init', 'add_event_post_types');
+
 
 
 require_once get_template_directory() . '/inc/customizer.php';

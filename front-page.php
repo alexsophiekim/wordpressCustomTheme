@@ -7,6 +7,12 @@ for ($i=1; $i <= 3 ; $i++) {
 }
 ?>
 
+    <div class="row events flex bg-secondary">
+        <div class="col">
+            <p class="text-center text-white">Event</p>
+        </div>
+    </div>
+
 <?php get_header(); ?>
 <?php if(has_header_image()): ?>
     <div class="container-fluid p-0">
@@ -61,21 +67,18 @@ for ($i=1; $i <= 3 ; $i++) {
 <?php if( have_posts() ): ?>
     <div class="container">
         <div class="row mt-3">
-            <?php if ('Grid' === get_theme_mod('1902Custom_layout_Card','Row')):?>
-                <?php while( have_posts() ): the_post(); ?>
-                    <div class="col-12 col-md-4 mb-3">
-                        <?php get_template_part('templates/content', get_post_format()); ?>
-                    </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <div class="row">
-                    <?php while( have_posts() ): the_post(); ?>
-                        <div class="col-12 p-4">
-                            <?php get_template_part('templates/content', get_post_format()); ?>
-                        </div>
-                    <?php endwhile; ?>
+            <?php while( have_posts() ): the_post(); ?>
+                <?php if ('Grid' === get_theme_mod('1902Custom_layout_Card','Row')):?>
+                <div class="col-12 col-md-4 mb-3">
+                    <?php get_template_part('templates/content', get_post_format()); ?>
                 </div>
-            <?php endif; ?>
+
+                <?php else: ?>
+                <div class="col-12 pb-2">
+                    <?php get_template_part('templates/content', get_post_format()); ?>
+                </div>
+                <?php endif; ?>
+            <?php endwhile; ?>
         </div>
         <?php
         $count_posts = wp_count_posts();

@@ -4,6 +4,7 @@ function add_custom_meta_boxes(){
     add_meta_box( 'moviesInfo', 'More Movies Info', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
     add_meta_box( 'moviesInfo', 'Movie Directors', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
     add_meta_box( 'moviesInfo', 'Movie Genre', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
+
 }
 
 add_action('add_meta_boxes','add_custom_meta_boxes');
