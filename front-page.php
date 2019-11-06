@@ -6,12 +6,24 @@ for ($i=1; $i <= 3 ; $i++) {
     }
 }
 ?>
-
+<?php
+    $args = array(
+        'post_type' => 'event'
+    );
+    $allEvents = new WP_Query($args);
+ ?>
+<?php if ($allEvents -> have_posts()): ?>
     <div class="row events flex bg-secondary">
+        <?php while( $allEvents->have_posts()): $allEvents -> the_post(); ?>
         <div class="col">
-            <p class="text-center text-white">Event</p>
+            <p class="text-center text-white">
+                Date: <?php echo get_post_meta(get_the_ID(),'event_date',true) ?>
+                 - Event: <?php echo get_post_meta(get_the_ID(),'event_title',true) ?>
+            </p>
         </div>
+    <?php endwhile; ?>
     </div>
+<?php endif; ?>
 
 <?php get_header(); ?>
 <?php if(has_header_image()): ?>

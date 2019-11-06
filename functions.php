@@ -94,7 +94,7 @@ function add_event_post_types(){
         'public' => true,
         'supports' => array('thumbnail','editor','title','custom-fields')
     );
-    register_post_type('events', $args);
+    register_post_type('event', $args);
 }
 add_action('init', 'add_event_post_types');
 

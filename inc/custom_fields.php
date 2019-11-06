@@ -4,9 +4,7 @@ function add_custom_meta_boxes(){
     add_meta_box( 'moviesInfo', 'More Movies Info', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
     add_meta_box( 'moviesInfo', 'Movie Directors', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
     add_meta_box( 'moviesInfo', 'Movie Genre', 'moviesInfoCallback', 'movie', 'normal', 'default', null );
-
 }
-
 add_action('add_meta_boxes','add_custom_meta_boxes');
 
 function moviesInfoCallback($post){
@@ -23,7 +21,6 @@ function moviesInfoCallback($post){
 
     require_once get_template_directory() . '/inc/moviesInfoForm.php';
 }
-
 
 function save_moviesInfo_meta_boxes($post_id){
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -42,3 +39,31 @@ function save_moviesInfo_meta_boxes($post_id){
 }
 
 add_action('save_post','save_moviesInfo_meta_boxes');
+
+function add_event_custom_meta_boxes(){
+    add_meta_box( 'eventInfo', 'Event Date', 'eventInfoCallback', 'event','normal','default', null);
+    add_meta_box( 'eventInfo', 'Event Title', 'eventInfoCallback', 'event','normal','default', null);
+    add_meta_box( 'eventInfo', 'Event Host', 'eventInfoCallback', 'event','normal','default', null);
+}
+add_action('add_meta_boxes','add_event_custom_meta_boxes');
+
+function eventInfoCallback($post){
+    require_once get_template_directory() . '/inc/eventInfoForm.php';
+}
+
+function save_eventInfo_meta_boxes($post_id){
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    $fields = [
+        'event_date',
+        'event_title',
+        'event_host'
+    ];
+    foreach ($fields as $field) {
+        if (array_key_exists($field, $_POST)) {
+            update_post_meta($post_id, $field, $_POST[$field]);
+        }
+    }
+}
+add_action('save_post','save_eventInfo_meta_boxes');
